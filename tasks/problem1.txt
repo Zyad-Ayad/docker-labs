@@ -1,0 +1,225 @@
+zayad@fedora:~$ sudo systemctl start docker
+[sudo] password for zayad: 
+Sorry, try again.
+[sudo] password for zayad: 
+zayad@fedora:~$ docker containers
+docker: unknown command: docker containers
+
+Run 'docker --help' for more information
+zayad@fedora:~$ docker --help
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Common Commands:
+  run         Create and run a new container from an image
+  exec        Execute a command in a running container
+  ps          List containers
+  build       Build an image from a Dockerfile
+  bake        Build from a file
+  pull        Download an image from a registry
+  push        Upload an image to a registry
+  images      List images
+  login       Authenticate to a registry
+  logout      Log out from a registry
+  search      Search Docker Hub for images
+  version     Show the Docker version information
+  info        Display system-wide information
+
+Management Commands:
+  builder     Manage builds
+  buildx*     Docker Buildx
+  compose*    Docker Compose
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  plugin      Manage plugins
+  system      Manage Docker
+  volume      Manage volumes
+
+Swarm Commands:
+  swarm       Manage Swarm
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Global Options:
+      --config string      Location of client config files (default "/home/zayad/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host string        Daemon socket to connect to
+  -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/home/zayad/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/home/zayad/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/home/zayad/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Run 'docker COMMAND --help' for more information on a command.
+
+For more help on how to use Docker, head to https://docs.docker.com/go/guides/
+zayad@fedora:~$ node -v
+v22.22.0
+zayad@fedora:~$ docker ps
+CONTAINER ID   IMAGE                                COMMAND                  CREATED         STATUS          PORTS                                         NAMES
+25b4bfd11763   ghcr.io/thelounge/thelounge:latest   "docker-entrypoint.s…"   11 months ago   Up 39 minutes   0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp   thelounge
+zayad@fedora:~$ cd Desktop
+zayad@fedora:~/Desktop$ mkdir docker
+zayad@fedora:~/Desktop$ cd docker/
+zayad@fedora:~/Desktop/docker$ ls
+zayad@fedora:~/Desktop/docker$ code .
+zayad@fedora:~/Desktop/docker$ mkdir lab1
+zayad@fedora:~/Desktop/docker$ cd lab1
+zayad@fedora:~/Desktop/docker/lab1$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: will change to "main" in Git 3.0. To configure the initial branch name
+hint: to use in all of your new repositories, which will suppress this warning,
+hint: call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+hint:
+hint: Disable this message with "git config set advice.defaultBranchName false"
+Initialized empty Git repository in /home/zayad/Desktop/docker/lab1/.git/
+zayad@fedora:~/Desktop/docker/lab1$ sudo docker start hello-world
+[sudo] password for zayad: 
+Sorry, try again.
+[sudo] password for zayad: 
+Error response from daemon: No such container: hello-world
+failed to start containers: hello-world
+zayad@fedora:~/Desktop/docker/lab1$ sudo docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+4f55086f7dd0: Pull complete 
+Digest: sha256:0e760fdfbc48ba8041e7c6db999bb40bfca508b4be580ac75d32c4e29d202ce1
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+zayad@fedora:~/Desktop/docker/lab1$ docker ps
+CONTAINER ID   IMAGE                                COMMAND                  CREATED         STATUS       PORTS                                         NAMES
+25b4bfd11763   ghcr.io/thelounge/thelounge:latest   "docker-entrypoint.s…"   11 months ago   Up 4 hours   0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp   thelounge
+zayad@fedora:~/Desktop/docker/lab1$ docker ps -a
+CONTAINER ID   IMAGE                                COMMAND                  CREATED         STATUS                      PORTS                                         NAMES
+8ce9edf2fff7   hello-world                          "/hello"                 3 minutes ago   Exited (0) 3 minutes ago                                                  dazzling_ptolemy
+f1734da542a7   ca3d0ea1bd8c                         "/init"                  6 months ago    Exited (0) 6 months ago                                                   mysql-workbench
+b0ac9b215b50   bf3eee621437                         "docker-entrypoint.s…"   8 months ago    Exited (1) 8 months ago                                                   crazy_blackburn
+84782700440e   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   vibrant_hamilton
+c16405214844   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   peaceful_engelbart
+df080638a302   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   lucid_goodall
+c9c3e2271c1f   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   festive_bhaskara
+b717984bf21c   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   infallible_maxwell
+68106c561926   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   strange_davinci
+99ae8506454f   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (137) 8 months ago                                                 compassionate_noether
+fa951666bffa   71a82c639d75                         "docker-entrypoint.s…"   8 months ago    Exited (1) 8 months ago                                                   fervent_satoshi
+25b4bfd11763   ghcr.io/thelounge/thelounge:latest   "docker-entrypoint.s…"   11 months ago   Up 4 hours                  0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp   thelounge
+zayad@fedora:~/Desktop/docker/lab1$ docker start 8ce9
+8ce9
+zayad@fedora:~/Desktop/docker/lab1$ docker start -a 8ce9
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+zayad@fedora:~/Desktop/docker/lab1$ docker rm 8ce9
+8ce9
+zayad@fedora:~/Desktop/docker/lab1$ docker ps -a
+CONTAINER ID   IMAGE                                COMMAND                  CREATED         STATUS                      PORTS                                         NAMES
+f1734da542a7   ca3d0ea1bd8c                         "/init"                  6 months ago    Exited (0) 6 months ago                                                   mysql-workbench
+b0ac9b215b50   bf3eee621437                         "docker-entrypoint.s…"   8 months ago    Exited (1) 8 months ago                                                   crazy_blackburn
+84782700440e   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   vibrant_hamilton
+c16405214844   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   peaceful_engelbart
+df080638a302   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   lucid_goodall
+c9c3e2271c1f   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   festive_bhaskara
+b717984bf21c   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   infallible_maxwell
+68106c561926   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   strange_davinci
+99ae8506454f   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (137) 8 months ago                                                 compassionate_noether
+fa951666bffa   71a82c639d75                         "docker-entrypoint.s…"   8 months ago    Exited (1) 8 months ago                                                   fervent_satoshi
+25b4bfd11763   ghcr.io/thelounge/thelounge:latest   "docker-entrypoint.s…"   11 months ago   Up 4 hours                  0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp   thelounge
+zayad@fedora:~/Desktop/docker/lab1$ docker rmi 8ce9
+Error response from daemon: No such image: 8ce9:latest
+zayad@fedora:~/Desktop/docker/lab1$ docker images
+                                                                                                                                                                         i Info →   U  In Use
+IMAGE                                ID             DISK USAGE   CONTENT SIZE   EXTRA
+ghcr.io/thelounge/thelounge:latest   efad6d3a3a54        172MB             0B    U   
+hello-world:latest                   e2ac70e7319a       10.1kB             0B        
+zayad@fedora:~/Desktop/docker/lab1$ docker rmi e2ac
+Untagged: hello-world:latest
+Untagged: hello-world@sha256:0e760fdfbc48ba8041e7c6db999bb40bfca508b4be580ac75d32c4e29d202ce1
+Deleted: sha256:e2ac70e7319a02c5a477f5825259bd118b94e8b02c279c67afa63adab6d8685b
+Deleted: sha256:897b3f2a7c1bc2f3d02432f7892fe31c6272c521ad4d70257df624504a3238b4
+zayad@fedora:~/Desktop/docker/lab1$ docker images
+                                                                                                                                                                         i Info →   U  In Use
+IMAGE                                ID             DISK USAGE   CONTENT SIZE   EXTRA
+ghcr.io/thelounge/thelounge:latest   efad6d3a3a54        172MB             0B    U   
+zayad@fedora:~/Desktop/docker/lab1$ 

@@ -1,0 +1,195 @@
+^Czayad@fedora:~/Desktop/docker/lab1/tasksdocker run -d -p 8080:80 nginx
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+5b4d6ff92fc4: Pull complete 
+830625e1ac85: Pull complete 
+5431d0092ffd: Pull complete 
+b4a248c845e5: Pull complete 
+7f8b1a2b17d8: Pull complete 
+45381ecb0e2f: Pull complete 
+13fd728be9eb: Pull complete 
+Digest: sha256:5aca99593157f4ae539a5dec1092a0ad8762f8e2eb1789085a13a0f5622369f6
+Status: Downloaded newer image for nginx:latest
+08d9f9e28bf1b31b5e0f300909bd5b1ed23f69033ab3897e8526d40fd197262d
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker ps
+CONTAINER ID   IMAGE                                COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+08d9f9e28bf1   nginx                                "/docker-entrypoint.…"   35 seconds ago   Up 35 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp       optimistic_mclaren
+25b4bfd11763   ghcr.io/thelounge/thelounge:latest   "docker-entrypoint.s…"   11 months ago    Up 5 hours      0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp   thelounge
+zayad@fedora:~/Desktop/docker/lab1/tasks$ curl http://localhost:8080
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+zayad@fedora:~/Desktop/docker/lab1/tasks$ echo <h1>HELLO WORLD</h1> > index.html
+bash: syntax error near unexpected token `>'
+zayad@fedora:~/Desktop/docker/lab1/tasks$ echo "<h1>HELLO WORLD</h1>" > index.html
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker cp index.html 08d9:/us/share/nginx/html/index.html
+Successfully copied 2.05kB to 08d9:/us/share/nginx/html/index.html
+Error response from daemon: Could not find the file /us/share/nginx/html in container 08d9
+zayad@fedora:~/Desktop/docker/lab1/tasks$ curl http://localhost:8080
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker cp index.html 08d9:/us/share/nginx/html/index.html
+Successfully copied 2.05kB to 08d9:/us/share/nginx/html/index.html
+Error response from daemon: Could not find the file /us/share/nginx/html in container 08d9
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker cp index.html 08d9:/us/share/nginx/html/
+no such directory
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker cp index.html 08d9:/us/share/nginx/html
+Successfully copied 2.05kB to 08d9:/us/share/nginx/html
+Error response from daemon: Could not find the file /us/share/nginx in container 08d9
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker exec 08d9 ps
+OCI runtime exec failed: exec failed: unable to start container process: exec: "ps": executable file not found in $PATH
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker exec 08d9 ls
+bin
+boot
+dev
+docker-entrypoint.d
+docker-entrypoint.sh
+etc
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker exec 08d9 ls /usr/share/
+X11
+apt
+base-files
+base-passwd
+bash-completion
+bug
+ca-certificates
+common-licenses
+debconf
+debianutils
+dict
+doc
+doc-base
+dpkg
+fish
+fontconfig
+fonts
+gcc
+gdb
+info
+java
+keyrings
+libc-bin
+libgcrypt20
+lintian
+locale
+man
+maven-repo
+menu
+misc
+nginx
+pam
+pam-configs
+perl5
+pixmaps
+polkit-1
+tabset
+terminfo
+util-linux
+xml
+zoneinfo
+zsh
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker exec 08d9 ls /usr/share/nginx
+html
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker exec 08d9 ls /usr/share/nginx/html
+50x.html
+index.html
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker exec 08d9 ls /usr/share/nginx/html/index.html
+/usr/share/nginx/html/index.html
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker exec 08d9 cat /usr/share/nginx/html/index.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+zayad@fedora:~/Desktop/docker/lab1/tasks$ docker cp index.html 08d9:/usr/share/nginx/html/index.html
+Successfully copied 2.05kB to 08d9:/usr/share/nginx/html/index.html
+zayad@fedora:~/Desktop/docker/lab1/tasks$ curl http://localhost:8080
+<h1>HELLO WORLD</h1>
+zayad@fedora:~/Desktop/docker/lab1/tasks$ 
+

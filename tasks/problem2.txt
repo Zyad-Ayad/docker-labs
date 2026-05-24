@@ -1,0 +1,99 @@
+zayad@fedora:~/Desktop/docker/lab1$ docker run ubuntu
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+6f5c5aa4e145: Pull complete 
+1c24335ddd46: Pull complete 
+Digest: sha256:f3d28607ddd78734bb7f71f117f3c6706c666b8b76cbff7c9ff6e5718d46ff64
+Status: Downloaded newer image for ubuntu:latest
+zayad@fedora:~/Desktop/docker/lab1$ docker ps
+CONTAINER ID   IMAGE                                COMMAND                  CREATED         STATUS       PORTS                                         NAMES
+25b4bfd11763   ghcr.io/thelounge/thelounge:latest   "docker-entrypoint.s…"   11 months ago   Up 4 hours   0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp   thelounge
+zayad@fedora:~/Desktop/docker/lab1$ docker ps -a
+CONTAINER ID   IMAGE                                COMMAND                  CREATED              STATUS                          PORTS                                         NAMES
+2a01c05412b1   ubuntu                               "/bin/bash"              About a minute ago   Exited (0) About a minute ago                                                 romantic_jackson
+f1734da542a7   ca3d0ea1bd8c                         "/init"                  6 months ago         Exited (0) 6 months ago                                                       mysql-workbench
+b0ac9b215b50   bf3eee621437                         "docker-entrypoint.s…"   8 months ago         Exited (1) 8 months ago                                                       crazy_blackburn
+84782700440e   3278ed126454                         "docker-entrypoint.s…"   8 months ago         Exited (9) 8 months ago                                                       vibrant_hamilton
+c16405214844   3278ed126454                         "docker-entrypoint.s…"   8 months ago         Exited (9) 8 months ago                                                       peaceful_engelbart
+df080638a302   3278ed126454                         "docker-entrypoint.s…"   8 months ago         Exited (9) 8 months ago                                                       lucid_goodall
+c9c3e2271c1f   3278ed126454                         "docker-entrypoint.s…"   8 months ago         Exited (9) 8 months ago                                                       festive_bhaskara
+b717984bf21c   3278ed126454                         "docker-entrypoint.s…"   8 months ago         Exited (9) 8 months ago                                                       infallible_maxwell
+68106c561926   3278ed126454                         "docker-entrypoint.s…"   8 months ago         Exited (9) 8 months ago                                                       strange_davinci
+99ae8506454f   3278ed126454                         "docker-entrypoint.s…"   8 months ago         Exited (137) 8 months ago                                                     compassionate_noether
+fa951666bffa   71a82c639d75                         "docker-entrypoint.s…"   8 months ago         Exited (1) 8 months ago                                                       fervent_satoshi
+25b4bfd11763   ghcr.io/thelounge/thelounge:latest   "docker-entrypoint.s…"   11 months ago        Up 4 hours                      0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp   thelounge
+zayad@fedora:~/Desktop/docker/lab1$ docker start ubuntu -iy
+unknown shorthand flag: 'y' in -y
+
+Usage:  docker start [OPTIONS] CONTAINER [CONTAINER...]
+
+Run 'docker start --help' for more information
+zayad@fedora:~/Desktop/docker/lab1$ docker start -it ubuntu 
+unknown shorthand flag: 't' in -t
+
+Usage:  docker start [OPTIONS] CONTAINER [CONTAINER...]
+
+Run 'docker start --help' for more information
+zayad@fedora:~/Desktop/docker/lab1$ docker start ubuntu
+Error response from daemon: No such container: ubuntu
+failed to start containers: ubuntu
+zayad@fedora:~/Desktop/docker/lab1$ docker run -it ubuntu
+root@d98de7043a16:/# echo docker
+docker
+root@d98de7043a16:/# bash
+root@d98de7043a16:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@d98de7043a16:/# ./ bin/bash
+bash: ./: Is a directory
+root@d98de7043a16:/# ./bin/bash
+root@d98de7043a16:/# exit
+exit
+root@d98de7043a16:/# exut
+bash: exut: command not found
+root@d98de7043a16:/# exit
+exit
+root@d98de7043a16:/# bash
+root@d98de7043a16:/# touch hello-docker
+root@d98de7043a16:/# ls
+bin  boot  dev  etc  hello-docker  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@d98de7043a16:/# exit
+exit
+root@d98de7043a16:/# exit
+exit
+zayad@fedora:~/Desktop/docker/lab1$ docker ps
+CONTAINER ID   IMAGE                                COMMAND                  CREATED         STATUS       PORTS                                         NAMES
+25b4bfd11763   ghcr.io/thelounge/thelounge:latest   "docker-entrypoint.s…"   11 months ago   Up 4 hours   0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp   thelounge
+zayad@fedora:~/Desktop/docker/lab1$ docker ps -a
+CONTAINER ID   IMAGE                                COMMAND                  CREATED         STATUS                      PORTS                                         NAMES
+d98de7043a16   ubuntu                               "/bin/bash"              2 minutes ago   Exited (0) 40 seconds ago                                                 admiring_dubinsky
+2a01c05412b1   ubuntu                               "/bin/bash"              5 minutes ago   Exited (0) 5 minutes ago                                                  romantic_jackson
+f1734da542a7   ca3d0ea1bd8c                         "/init"                  6 months ago    Exited (0) 6 months ago                                                   mysql-workbench
+b0ac9b215b50   bf3eee621437                         "docker-entrypoint.s…"   8 months ago    Exited (1) 8 months ago                                                   crazy_blackburn
+84782700440e   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   vibrant_hamilton
+c16405214844   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   peaceful_engelbart
+df080638a302   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   lucid_goodall
+c9c3e2271c1f   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   festive_bhaskara
+b717984bf21c   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   infallible_maxwell
+68106c561926   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (9) 8 months ago                                                   strange_davinci
+99ae8506454f   3278ed126454                         "docker-entrypoint.s…"   8 months ago    Exited (137) 8 months ago                                                 compassionate_noether
+fa951666bffa   71a82c639d75                         "docker-entrypoint.s…"   8 months ago    Exited (1) 8 months ago                                                   fervent_satoshi
+25b4bfd11763   ghcr.io/thelounge/thelounge:latest   "docker-entrypoint.s…"   11 months ago   Up 4 hours                  0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp   thelounge
+zayad@fedora:~/Desktop/docker/lab1$ docker rm d98d 2a01
+d98d
+2a01
+zayad@fedora:~/Desktop/docker/lab1$ docker images
+                                                                                                                                                                         i Info →   U  In Use
+IMAGE                                ID             DISK USAGE   CONTENT SIZE   EXTRA
+ghcr.io/thelounge/thelounge:latest   efad6d3a3a54        172MB             0B    U   
+ubuntu:latest                        30ba44506a6d        100MB             0B        
+zayad@fedora:~/Desktop/docker/lab1$ docker rmi ubuntu
+Untagged: ubuntu:latest
+Untagged: ubuntu@sha256:f3d28607ddd78734bb7f71f117f3c6706c666b8b76cbff7c9ff6e5718d46ff64
+Deleted: sha256:30ba44506a6d003153c80023c4474e67d3487e9178df254bde55b19209cc8683
+Deleted: sha256:6b3d3a36cb6bd9c464ddfac247ecbe3f4385c5e2b6dc344f70e00fb0c8a3c58c
+Deleted: sha256:0c3db79307ab91dad11fad2b136a2b56df6efeeb567c4c99e6e316b63885c9f6
+zayad@fedora:~/Desktop/docker/lab1$ docker images
+                                                                                                                                                                         i Info →   U  In Use
+IMAGE                                ID             DISK USAGE   CONTENT SIZE   EXTRA
+ghcr.io/thelounge/thelounge:latest   efad6d3a3a54        172MB             0B    U   
+zayad@fedora:~/Desktop/docker/lab1$ 

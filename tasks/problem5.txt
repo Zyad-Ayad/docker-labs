@@ -1,0 +1,76 @@
+zayad@fedora:~/Desktop/docker/lab1/tasks$ vim problem4.txt
+zayad@fedora:~/Desktop/docker/lab1/tasks$ cd ..
+zayad@fedora:~/Desktop/docker/lab1$ mkdir pythonapp
+zayad@fedora:~/Desktop/docker/lab1$ cd pythonapp/
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ ls
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ echo "print(\"Hello, world\")" > app.py
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ ls
+app.py
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ cat app.py 
+print("Hello, world")
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ vim Dockerfile
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ docker build -t python-app .
+[+] Building 279.2s (8/8) FINISHED                                                                                                                                            docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                                    0.0s
+ => => transferring dockerfile: 167B                                                                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:latest                                                                                                                        2.3s
+ => [internal] load .dockerignore                                                                                                                                                       0.0s
+ => => transferring context: 2B                                                                                                                                                         0.0s
+ => [1/3] FROM docker.io/library/python:latest@sha256:6928095b5c67225857e608dd95271a81e8bb134e4bf7e7c305a9cdc2502a1d06                                                                276.5s
+ => => resolve docker.io/library/python:latest@sha256:6928095b5c67225857e608dd95271a81e8bb134e4bf7e7c305a9cdc2502a1d06                                                                  0.0s
+ => => sha256:6928095b5c67225857e608dd95271a81e8bb134e4bf7e7c305a9cdc2502a1d06 10.95kB / 10.95kB                                                                                        0.0s
+ => => sha256:ef1933f1bbef1a07683cea9dae6b7ba16ea45c12ab7234da63906f4df3f818b7 2.32kB / 2.32kB                                                                                          0.0s
+ => => sha256:f494e154bc1f458228780ebfb2cef8654f0b0e9c860e8bf3ce24fa49f509670a 6.46kB / 6.46kB                                                                                          0.0s
+ => => sha256:b53089dca50590292ecc77bf803152a5799650e734717e4b706cb812a02073ba 67.78MB / 67.78MB                                                                                      138.6s
+ => => sha256:f32f49ce655a9cf7c1fd4ca1417ddb39a54cedf4b7ff35de20f8009c18dd7a96 49.31MB / 49.31MB                                                                                      126.3s
+ => => sha256:8a7504cd2818ce40ac76c17886a03dff25ef0aa06ff6125bf0f0c7302cdc6471 25.63MB / 25.63MB                                                                                       45.3s
+ => => sha256:8d6d44b254dab2063c4226fc8a0849d5527402d24d3bea80d644a1e4ac3a47e5 236.18MB / 236.18MB                                                                                    273.0s
+ => => extracting sha256:f32f49ce655a9cf7c1fd4ca1417ddb39a54cedf4b7ff35de20f8009c18dd7a96                                                                                               0.7s
+ => => sha256:0a4465cc9f09dc7bd8fce31cf033e53ff50a486cf15839bdc54eca5ac36b9eb2 6.09MB / 6.09MB                                                                                        137.2s
+ => => extracting sha256:8a7504cd2818ce40ac76c17886a03dff25ef0aa06ff6125bf0f0c7302cdc6471                                                                                               0.3s
+ => => sha256:c965dce520b37b106f5c288e74f6012e9b05c65468dc8c04ef822c46c6abdfc1 29.61MB / 29.61MB                                                                                      181.3s
+ => => extracting sha256:b53089dca50590292ecc77bf803152a5799650e734717e4b706cb812a02073ba                                                                                               0.9s
+ => => sha256:61719a06ef521afb108a06cdbdfebeaa93b146a042ebb781b7a728219a3108b3 250B / 250B                                                                                            138.9s
+ => => extracting sha256:8d6d44b254dab2063c4226fc8a0849d5527402d24d3bea80d644a1e4ac3a47e5                                                                                               2.7s
+ => => extracting sha256:0a4465cc9f09dc7bd8fce31cf033e53ff50a486cf15839bdc54eca5ac36b9eb2                                                                                               0.1s
+ => => extracting sha256:c965dce520b37b106f5c288e74f6012e9b05c65468dc8c04ef822c46c6abdfc1                                                                                               0.3s
+ => => extracting sha256:61719a06ef521afb108a06cdbdfebeaa93b146a042ebb781b7a728219a3108b3                                                                                               0.0s
+ => [internal] load build context                                                                                                                                                       0.0s
+ => => transferring context: 114B                                                                                                                                                       0.0s
+ => [2/3] WORKDIR /app                                                                                                                                                                  0.2s
+ => [3/3] COPY app.py .                                                                                                                                                                 0.1s
+ => exporting to image                                                                                                                                                                  0.0s
+ => => exporting layers                                                                                                                                                                 0.0s
+ => => writing image sha256:bfc8121c5c13114b87a4eb17e00a0338ece9a0288424e8e37f3f8783ba0056f5                                                                                            0.0s
+ => => naming to docker.io/library/python-app                                                                                                                                           0.0s
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ docker images
+                                                                                                                                                                         i Info →   U  In Use
+IMAGE                                ID             DISK USAGE   CONTENT SIZE   EXTRA
+ghcr.io/thelounge/thelounge:latest   efad6d3a3a54        172MB             0B    U   
+nginx:latest                         7aaca76c508f        161MB             0B    U   
+python-app:latest                    bfc8121c5c13       1.12GB             0B        
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ docker build -t python-app .
+[+] Building 1.7s (8/8) FINISHED                                                                                                                                              docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                                    0.0s
+ => => transferring dockerfile: 167B                                                                                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/python:latest                                                                                                                        1.6s
+ => [internal] load .dockerignore                                                                                                                                                       0.0s
+ => => transferring context: 2B                                                                                                                                                         0.0s
+ => [1/3] FROM docker.io/library/python:latest@sha256:6928095b5c67225857e608dd95271a81e8bb134e4bf7e7c305a9cdc2502a1d06                                                                  0.0s
+ => [internal] load build context                                                                                                                                                       0.0s
+ => => transferring context: 86B                                                                                                                                                        0.0s
+ => CACHED [2/3] WORKDIR /app                                                                                                                                                           0.0s
+ => CACHED [3/3] COPY app.py .                                                                                                                                                          0.0s
+ => exporting to image                                                                                                                                                                  0.0s
+ => => exporting layers                                                                                                                                                                 0.0s
+ => => writing image sha256:bfc8121c5c13114b87a4eb17e00a0338ece9a0288424e8e37f3f8783ba0056f5                                                                                            0.0s
+ => => naming to docker.io/library/python-app                                                                                                                                           0.0s
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ docker images
+                                                                                                                                                                         i Info →   U  In Use
+IMAGE                                ID             DISK USAGE   CONTENT SIZE   EXTRA
+ghcr.io/thelounge/thelounge:latest   efad6d3a3a54        172MB             0B    U   
+nginx:latest                         7aaca76c508f        161MB             0B    U   
+python-app:latest                    bfc8121c5c13       1.12GB             0B        
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ docker run python-app:latest
+Hello, world
+zayad@fedora:~/Desktop/docker/lab1/pythonapp$ 
